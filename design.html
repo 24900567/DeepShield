@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url("assets/background.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      background: #222e50; /* deep blue */
+    }
+
+    .radial-meter {
+      width: 120px;
+      margin: 20px auto;
+    }
+
+    .circle-bg {
+      fill: none;
+      stroke: #444;
+      stroke-width: 3.8;
+    }
+
+    .circle {
+      fill: none;
+      stroke: #4CAF50;
+      stroke-width: 2.8;
+      stroke-linecap: round;
+      stroke-dasharray: __STROKE_DASHARRAY__, 100;
+    }
+
+    .percentage {
+      fill: #fff;
+      font-size: 0.7em;
+      text-anchor: middle;
+      filter: drop-shadow(0 0 4px #222);
+    }
+
+    .label {
+      font-size: 1.4em;
+      margin-top: 10px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.8); /* dark, highly visible */
+      padding: 8px 24px;
+      border-radius: 8px;
+      display: inline-block;
+      filter: drop-shadow(0 0 4px #222);
+    }
+
+    .result {
+      background: rgba(0,0,0,0.85); /* dark, highly visible */
+      color: #fff;                  /* white text */
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 1.2em;
+      margin: 16px auto;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="radial-meter">
+    <svg viewBox="0 0 36 36">
+      <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      <path class="circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
+      <text x="18" y="20.35" class="percentage">__PERCENTAGE__%</text>
+    </svg>
+  </div>
+
+  <div class="label">__LABEL__</div>
+
+ 
+
+</body>
+</html>
