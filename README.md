@@ -26,7 +26,6 @@ Built for journalists, citizens, and digital platforms, DeepShield analyzes faci
 
 ---
 
-## 📦 Folder Structure
 
 
 ## 🚧 Known Limitations
