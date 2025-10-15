@@ -1,6 +1,7 @@
 import cv2
 import os
 import logging
+import numpy as np  # <-- Add this line
 from deepface import DeepFace
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
