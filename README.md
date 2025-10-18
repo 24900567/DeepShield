@@ -197,6 +197,9 @@ st.caption("Built by DHINESH and team • Agentic AI for truth and transparency"
 ## Sample Output
 ![alt text](image.png)
 
+## Deployed App Link
+https://deepshield-e3jw9tifqwoaxgr4dbvegf.streamlit.app/
+
 ## Result
 DeepShield analyzes video frames using facial attribute detection to identify signs of synthetic manipulation. It evaluates each frame for anomalies in emotion, age, and gender, then calculates a suspicion score to classify the video.
 🔍 Detection Labels:
