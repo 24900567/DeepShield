@@ -1,11 +1,23 @@
-import cv2
 import os
+os.environ["OPENCV_VIDEOIO_PRIORITY_MSMF"] = "0"  # Fix for Streamlit/Windows video issues
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
+os.system("apt-get update -qq && apt-get install -y libgl1 libglib2.0-0 ffmpeg > /dev/null 2>&1")
 import logging
 import numpy as np
+
+# --- Safe import of OpenCV ---
+try:
+    import cv2
+except ImportError:
+    os.system("pip install opencv-python-headless==4.8.1.78")
+    import cv2
+
 from deepface import DeepFace
+
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
 
 def detect_deepfake(video_path, frame_skip=30, reports_dir="reports"):
     if not os.path.exists(video_path):
@@ -27,6 +39,7 @@ def detect_deepfake(video_path, frame_skip=30, reports_dir="reports"):
         ret, frame = cap.read()
         if not ret:
             break
+
         frame_count += 1
         if frame_count % frame_skip != 0:
             continue
@@ -53,8 +66,6 @@ def detect_deepfake(video_path, frame_skip=30, reports_dir="reports"):
                     suspicious += 1
                 if age <= 5:
                     suspicious += 1
-                if age <= 5 and suspicious >= 1:
-                    suspicious_frames += 1
 
                 if suspicious >= 2 or score >= 0.6:
                     suspicious_frames += 1

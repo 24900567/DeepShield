@@ -5,11 +5,8 @@ import streamlit as st
 from PIL import Image
 from detector import detect_deepfake
 import base64
-import io
 
-
-
-# Load and encode background image
+# --- Load background image ---
 with open("assets/background.png", "rb") as image_file:
     encoded_string = base64.b64encode(image_file.read()).decode()
 
@@ -18,6 +15,7 @@ st.set_page_config(page_title="DeepShield", page_icon="🛡️", layout="wide")
 st.title("🛡️ DeepShield: Real-Time Deepfake Detection Agent")
 st.markdown("DeepShield helps you detect and explain deepfakes in videos. Upload a video file, and our AI agent will analyze it for signs of manipulation.")
 
+# --- Upload section ---
 video_file = st.file_uploader("📤 Upload a video file", type=["mp4", "mov", "avi"])
 
 if video_file is not None:
@@ -50,6 +48,7 @@ else:
         html = html.replace("__LABEL__", "Awaiting upload...")
         st.markdown(html, unsafe_allow_html=True)
 
+# --- Background image styling ---
 st.markdown(f"""
     <style>
     .stApp {{
