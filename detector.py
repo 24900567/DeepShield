@@ -1,7 +1,7 @@
 import cv2
 import os
 import logging
-import numpy as np  # <-- Add this line
+import numpy as np
 from deepface import DeepFace
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -51,12 +51,8 @@ def detect_deepfake(video_path, frame_skip=30, reports_dir="reports"):
                 if gender not in ['Man', 'Woman'] or gender == 'Unknown':
                     score += 0.3
                     suspicious += 1
-                if 'dominant_emotion' not in result[0]:
-                    suspicious += 1
-
-                # Your new logic for very young faces
                 if age <= 5:
-                    suspicious += 1  # Flag very young faces as potentially synthetic
+                    suspicious += 1
                 if age <= 5 and suspicious >= 1:
                     suspicious_frames += 1
 
